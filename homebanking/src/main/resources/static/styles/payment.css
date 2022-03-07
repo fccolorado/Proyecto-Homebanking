@@ -1,0 +1,260 @@
+#ownAccount {
+    display: none;
+}
+
+#enterAccountNumber {
+    display: none;
+}
+
+:root {
+    --color-blue-medium: #8fe2e4;
+    --color-purple: #632ce7;
+    --color-gray: #ccc;
+    --color-gray-medium: #f8f9fa;
+    --color-yellow: #fac32c;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    justify-content: space-around;
+    width: 100%
+}
+
+.nav-link {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    border: 0.2vw solid #033B80;
+}
+
+.nav-link:hover {
+    background-color: #077ccf;
+    list-style-type: none;
+    border-radius: 2rem 5s;
+}
+
+.navbar-brand>img {
+    width: 200px;
+    border-radius: 0.5px;
+}
+
+form {
+    width: 60%;
+    margin-top: 20px !important;
+    display: flex;
+    justify-content: center;
+    border-radius: 0.1rem;
+    border: 0.1vw solid #033B80;
+}
+
+.h4Account {
+    color: #033B99
+}
+
+.DEBIT {
+    color: red;
+}
+
+.CREDIT {
+    color: rgb(0, 255, 55);
+}
+
+.transactions {
+    margin-top: 120px !important;
+}
+
+.transaction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoTransaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+    padding-top: 2rem;
+}
+
+.datosTransaction {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.transaction-items {
+    display: flex!important;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 20%;
+}
+
+.transaction-share {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+    justify-content: center;
+    padding-bottom: 8rem;
+}
+
+.shareButton {
+    padding: 0;
+    margin: 0;
+}
+
+.amountTransaction {
+    display: flex;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    justify-content: space-around;
+    height: 2%;
+    width: 20%;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+
+article {
+    display: flex;
+    height: 30vh;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+    margin: 0;
+}
+
+@media screen and (max-width: 376px) {
+    .header-main {
+        height: initial
+    }
+}
+
+.buttonHere>a {
+    display: flex;
+    --size: 80px;
+    width: var(--size);
+    width: var(--size);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch {
+    flex-direction: row;
+}
+
+.bg-primary {
+    width: 100%;
+    border-radius: 0.5vw;
+    border: none;
+}
+
+.buttonHere>a :hover,
+.sec-brands>a :hover {
+    transition: .3s filter;
+}
+
+fieldset {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.account {
+    width: 40%;
+}
+
+.borderShadow {
+    border-radius: 0.1rem;
+    border: 0.1vw solid #033B80;
+}
+
+.buttonHere>a :hover,
+.sec-brands>a :hover {
+    filter: opacity(0.5);
+}
+
+.numberAccount {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.balanceAccount {
+    display: flex;
+}
+
+.btn {
+    border: none;
+}
+
+.buttonAccounts {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+hr {
+    color: #033B99
+}
+
+.portfolio-item>img {
+    transition: 0.4s;
+}
+
+.portfolio-item:hover>img {
+    transform: scale(0.96);
+}
+
+.bg-purple {
+    background-color: rgba(131 87 235 / 0.3);
+    filter: opacity(0.55);
+}
+
+.sec-brands {
+    display: flex;
+}
+
+.logoFranquicia {
+    display: flex;
+    justify-content: center;
+}
+
+.h2Footer {
+    font-size: 20px;
+}
+
+.redesSociales {
+    display: flex;
+}
+
+.buttonShare {
+    border: none;
+}

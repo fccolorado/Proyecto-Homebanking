@@ -1,0 +1,136 @@
+:root {
+    --color-blue-medium: #8fe2e4;
+    --color-purple: #632ce7;
+    --color-gray: #ccc;
+    --color-gray-medium: #f8f9fa;
+    --color-yellow: #fac32c;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    justify-content: space-around;
+    width: 100%
+}
+
+.nav-link {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    border: 0.2vw solid #033B80;
+}
+
+.nav-link:hover {
+    background-color: #6f9dbe;
+    list-style-type: none;
+    border-radius: 1rem 9s;
+}
+
+.navbar-brand>img {
+    width: 200px;
+    border-radius: 0.5px;
+}
+
+.titleAccounts {
+    margin-top: 50px !important;
+}
+
+.accounts {
+    margin-top: 120px !important;
+}
+
+.h4Account {
+    color: #033B99
+}
+
+@media screen and (max-width: 376px) {
+    .header-main {
+        height: initial
+    }
+}
+
+.buttonHere>a {
+    display: flex;
+    --size: 80px;
+    width: var(--size);
+    width: var(--size);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-primary {
+    width: 100%;
+    border-radius: 0.5vw;
+    border: none;
+}
+
+.buttonHere>a :hover,
+.sec-brands>a :hover {
+    transition: .3s filter;
+}
+
+.buttonHere>a :hover,
+.sec-brands>a :hover {
+    filter: opacity(0.5);
+}
+
+.numberAccount {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.balanceAccount {
+    display: flex;
+}
+
+.btn {
+    border: none;
+}
+
+.buttonAccounts {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+hr {
+    color: #033B99
+}
+
+.portfolio-item>img {
+    transition: 0.4s;
+}
+
+.portfolio-item:hover>img {
+    transform: scale(0.96);
+}
+
+.bg-purple {
+    background-color: rgba(131 87 235 / 0.3);
+    filter: opacity(0.55);
+}
+
+.sec-brands {
+    display: flex;
+}
+
+.logoFranquicia {
+    display: flex;
+    justify-content: center;
+}
+
+.h2Footer {
+    font-size: 20px;
+}
+
+.redesSociales {
+    display: flex;
+}
