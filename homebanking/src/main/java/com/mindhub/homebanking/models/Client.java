@@ -48,7 +48,6 @@ public class Client {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-
     }
 
     public long getId() {
@@ -101,7 +100,6 @@ public class Client {
         accounts.add(account);
 
     }
-
 
     @JsonIgnore
     public List<Loan> getLoans() {

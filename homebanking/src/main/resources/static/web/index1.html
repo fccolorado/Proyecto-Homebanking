@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../styles/form.css">
+
+    <title>Form</title>
+</head>
+
+<body>
+
+
+    <div class="container text-center animate__animated animate__fadeInLeft" id="app">
+        <div class="signin-singup">
+            <form class="sign-in-form" onSubmit="return false">
+                <h2 class="title">Sign in</h2>
+                <div class="input-field">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <circle cx="12" cy="7" r="4" />
+                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                    </svg>
+                    <input class="inputSignIn" type="text" placeholder="Username" v-model="email">
+                </div>
+                <div class="input-field">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <rect x="5" y="11" width="14" height="10" rx="2" />
+                        <circle cx="12" cy="16" r="1" />
+                        <path d="M8 11v-4a4 4 0 0 1 8 0v4" />
+                    </svg>
+                    <input type="password" placeholder="Password" v-model="password">
+                </div>
+                <input type="submit" value="OK" class="btn" @click="signIn()">
+                <p class="social-text">Or Sign in with social platform</p>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg " class="icon icon-tabler icon-tabler-brand-facebook bg-light rounded shadow  fw-light " width="45 " height="45 " viewBox="0 0 24 24 " stroke-width="1.5 " stroke="#033B80 " fill="none " stroke-linecap="round " stroke-linejoin="round ">
+                            <path stroke="none " d="M0 0h24v24H0z " fill="none " />
+                            <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3 " />
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/i/flow/login" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+                        </svg>
+                    </a>
+                    <a href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-google" width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M17.788 5.108a9 9 0 1 0 3.212 6.892h-8" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/login/es?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <rect x="4" y="4" width="16" height="16" rx="2" />
+                            <line x1="8" y1="11" x2="8" y2="16" />
+                            <line x1="8" y1="8" x2="8" y2="8.01" />
+                            <line x1="12" y1="16" x2="12" y2="11" />
+                            <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+                        </svg>
+                    </a>
+                </div>
+
+                <a class="returnHome" href="../web/index.html">Return home page</a>
+
+                <p class="account-text">Don't have an account?<a href="#" id="sign-up-btn2"> Sign up</a></p>
+
+            </form>
+            <form class="sign-up-form" onSubmit="return false">
+                <h2 class="title">Sign up</h2>
+                <div class="input-field  sign-up-formm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <circle cx="12" cy="7" r="4" />
+                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                    </svg>
+                    <input type="text" placeholder="First name" v-model="firstName">
+                </div>
+                <div class="input-field sign-up-formm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <circle cx="12" cy="7" r="4" />
+                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                    </svg>
+                    <input type="text" placeholder="Last name" v-model="lastName">
+                </div>
+                <div class="input-field sign-up-formm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                        <polyline points="3 7 12 13 21 7" />
+                    </svg>
+                    <input type="email" placeholder="Email" v-model="email">
+                </div>
+                <div class="input-field sign-up-formm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <rect x="5" y="11" width="14" height="10" rx="2" />
+                        <circle cx="12" cy="16" r="1" />
+                        <path d="M8 11v-4a4 4 0 0 1 8 0v4" />
+                    </svg>
+                    <input type="password" placeholder="Password" v-model="password">
+                </div>
+
+                <input type="submit" value="OK" class="btn" @click="signUp()">
+                <p class="social-text">Or Sign up with social platform</p>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/humebank/" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg " class="icon icon-tabler icon-tabler-brand-facebook bg-light rounded shadow  fw-light " width="45 " height="45 " viewBox="0 0 24 24 " stroke-width="1.5 " stroke="#033B80 " fill="none " stroke-linecap="round " stroke-linejoin="round ">
+                            <path stroke="none " d="M0 0h24v24H0z " fill="none " />
+                            <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3 " />
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/city2cityawh" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+                        </svg>
+                    </a>
+                    <a href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-google" width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M17.788 5.108a9 9 0 1 0 3.212 6.892h-8" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/login/es?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#033B80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <rect x="4" y="4" width="16" height="16" rx="2" />
+                            <line x1="8" y1="11" x2="8" y2="16" />
+                            <line x1="8" y1="8" x2="8" y2="8.01" />
+                            <line x1="12" y1="16" x2="12" y2="11" />
+                            <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+                        </svg>
+                    </a>
+                </div>
+                <a class="returnHome2" href="../web/index.html">Return home page</a>
+                <p class="account-text">Do you have an account? <a href="#" id="sign-in-btn2"> Sign in</a></p>
+
+            </form>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <img src="../assets/logo4.png" class="image">
+                <div class="content">
+                    <h3 class="h3Mobil">Do you have an account?</h3>
+                    <button class="btn btnIndex1" id="sign-in-btn">Sign in</button>
+
+                </div>
+            </div>
+            <div class="panel right-panel">
+                <img src="../assets/logo4.png" class="image">
+                <div class="content">
+                    <h3 class="h3Mobil">Don't you have an account?</h3>
+                    <button class="btn btnIndex1" id="sign-up-btn">Sign up</button>
+
+                    <!-- <button class="btnPrueba" id="sign-up-btn">Sign up</button> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/form.js"></script>
+
+</body>
+
+</html>

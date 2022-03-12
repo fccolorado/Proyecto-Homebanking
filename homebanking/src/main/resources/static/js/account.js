@@ -74,7 +74,7 @@ let app = new Vue({
             })
 
             setTimeout(() => {
-                axios.post('/api/logout').then(response => { window.location.href = "/web/home.html" })
+                axios.post('/api/logout').then(response => { window.location.href = "/web/index.html" })
 
             }, 2000);
 

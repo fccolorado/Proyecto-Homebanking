@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background: #094a99
+}
+
+.navHome {
+    background: #414750
+}
+
+.logoTorre {
+    width: 150px;
+    height: 100px;
+}
+
+main {
+    margin-top: 160px;
+    /* background: #094a99 */
+}
+
+#app {
+    margin-top: 120px;
+}
+
+.strengths {
+    display: flex;
+    width: 50%;
+}
+
+.strengths2 {
+    display: flex;
+}
+
+.userImage {
+    width: 200px;
+    height: 200px;
+    border-radius: 20rem;
+}
+
+.userNameImage {
+    display: flex;
+    justify-content: center;
+}

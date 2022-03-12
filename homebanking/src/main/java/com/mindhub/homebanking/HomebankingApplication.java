@@ -44,11 +44,11 @@ public class HomebankingApplication {
             clientRepository.save(admin);
 
 
-            Account vin001 = new Account("VIN001", LocalDateTime.now(), 5000.00, melba, AccountType.SAVINGS,true);
-            Account vin002 = new Account("VIN002", LocalDateTime.now().plusDays(1), 7500.00, melba, AccountType.CURRENT,true);
-            Account vin003 = new Account("VIN003", LocalDateTime.now(), 5000.00, fermin, AccountType.SAVINGS,true);
-            Account vin004 = new Account("VIN004", LocalDateTime.now().plusDays(1), 7500.00, fermin,AccountType.SAVINGS,true);
-            Account vin005 = new Account("VIN005", LocalDateTime.now(), 50000.00, melba, AccountType.CURRENT,true);
+            Account vin001 = new Account("VIN001", LocalDateTime.now(), 5000.00, melba, AccountType.SAVINGS, true);
+            Account vin002 = new Account("VIN002", LocalDateTime.now().plusDays(1), 7500.00, melba, AccountType.CURRENT, true);
+            Account vin003 = new Account("VIN003", LocalDateTime.now(), 5000.00, fermin, AccountType.SAVINGS, true);
+            Account vin004 = new Account("VIN004", LocalDateTime.now().plusDays(1), 7500.00, fermin, AccountType.SAVINGS, true);
+            Account vin005 = new Account("VIN005", LocalDateTime.now(), 50000.00, melba, AccountType.CURRENT, true);
 
             accountRepository.save(vin001);
             accountRepository.save(vin002);
@@ -82,16 +82,14 @@ public class HomebankingApplication {
             transactionRepository.save(transaction9);
 
 
-
-            Loan mortgage = new Loan("Mortgage", 500000.0, Arrays.asList(12, 24, 36, 48, 60),1.15);
-            Loan personal = new Loan("Personal", 100000.0, Arrays.asList(6, 12, 24),2.18);
-            Loan automotive = new Loan("Automotive", 300000.0, Arrays.asList(6, 12, 24, 36), 1.17);
+            Loan mortgage = new Loan("Mortgage", 500000.0, Arrays.asList(12, 24, 36, 48, 60), 0.151);
+            Loan personal = new Loan("Personal", 100000.0, Arrays.asList(6, 12, 24), 0.10);
+            Loan automotive = new Loan("Automotive", 300000.0, Arrays.asList(6, 12, 24, 36), 0.20);
 
 
             loanRepository.save(mortgage);
             loanRepository.save(personal);
             loanRepository.save(automotive);
-
 
 
             ClientLoan creditoMelba1 = new ClientLoan(400000.0, 60, melba, mortgage);
@@ -100,25 +98,22 @@ public class HomebankingApplication {
 
             clientLoanRepository.save(creditoMelba1);
             clientLoanRepository.save(creditoMelba2);
-//            clientLoanRepository.save(creditoFermin1);
-//            clientLoanRepository.save(creditoFermin2);
 
-            LocalDate fromDate  = LocalDate.now();
+            LocalDate fromDate = LocalDate.now();
             LocalDate thruDate = fromDate.plusYears(5);
 
 
-            Card card1 = new Card(melba.getFirstName() + " " + melba.getLastName(), CardType.DEBIT, CardColor.GOLD, "5456 5834 5674 8082", 345, fromDate, thruDate, melba,true);
-            Card card2 = new Card(melba.getFirstName() + " " + melba.getLastName(), CardType.CREDIT, CardColor.TITANIUM, "5456 5834 5674 8081", 346, fromDate, thruDate, melba,true);
-            Card card3 = new Card(melba.getFirstName() + " " + melba.getLastName(), CardType.CREDIT, CardColor.SILVER, "5456 5834 2035 8080", 346, fromDate, thruDate, melba,true);
-            Card card4 = new Card(fermin.getFirstName() + " " + fermin.getLastName(), CardType.CREDIT, CardColor.SILVER, "5456 5834 5674 5456", 347, fromDate, fromDate, fermin,true);
-            Card card5 = new Card(fermin.getFirstName() + " " + fermin.getLastName(), CardType.CREDIT, CardColor.SILVER, "5456 5834 5674 5555", 204, fromDate, thruDate, fermin,true);
+            Card card1 = new Card(melba.getFirstName() + " " + melba.getLastName(), CardType.DEBIT, CardColor.GOLD, "5456 5834 5674 8082", 345, fromDate, thruDate, melba, true);
+            Card card2 = new Card(melba.getFirstName() + " " + melba.getLastName(), CardType.CREDIT, CardColor.PLATINUM, "5456 5834 5674 8081", 346, fromDate, thruDate, melba, true);
+            Card card3 = new Card(melba.getFirstName() + " " + melba.getLastName(), CardType.CREDIT, CardColor.SILVER, "5456 5834 2035 8080", 346, fromDate, thruDate, melba, true);
+            Card card4 = new Card(fermin.getFirstName() + " " + fermin.getLastName(), CardType.CREDIT, CardColor.SILVER, "5456 5834 5674 5456", 347, fromDate, fromDate, fermin, true);
+            Card card5 = new Card(fermin.getFirstName() + " " + fermin.getLastName(), CardType.CREDIT, CardColor.SILVER, "5456 5834 5674 5555", 204, fromDate, thruDate, fermin, true);
 
             cardRepository.save(card1);
             cardRepository.save(card2);
             cardRepository.save(card3);
             cardRepository.save(card4);
             cardRepository.save(card5);
-
         };
     }
 }

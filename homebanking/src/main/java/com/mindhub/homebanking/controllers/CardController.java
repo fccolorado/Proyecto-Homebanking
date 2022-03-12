@@ -8,6 +8,7 @@ import com.mindhub.homebanking.models.CardType;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.CardRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.services.ClientService;
 import com.mindhub.homebanking.utils.CardUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,55 +26,30 @@ import static java.util.stream.Collectors.toList;
 public class CardController {
 
     @Autowired
-    private CardRepository cardRepository;
+    CardRepository cardRepository;
 
     @Autowired
-    private ClientRepository clientRepository;
+    ClientService clientService;
+    @Autowired
+    ClientRepository clientRepository;
 
-//    //GENERATE CVV
-//    int min = 100;
-//    int max = 999;
-//
-//    public int getCvvNumber(int max, int min) {
-//        return (int) ((Math.random() * (max - min)) + min);
-//    }
-
-    //    //GENERATE CARD NUMBER
-//    int min2 = 1000;
-//    int max2 = 9999;
-//
-//    public int getRandomCardNumber(int max2, int min2) {
-//        return (int) ((Math.random() * (max2 - min2)) + min2);
-//    }
-//
-//    public String getStringCardNumber() {
-//        int randomCardNumber = getRandomCardNumber(max2, min2);
-//        return String.valueOf(randomCardNumber);
-//    }
-//
-//    public String getCardNumber() {
-//        String cardNumber = "";
-//        for (int i = 0; i < 4; i++) {
-//            String aux = getStringCardNumber();
-//            cardNumber += ("-" + aux);
-//        }
-//        return cardNumber.substring(1);
-//    }
     @PostMapping("/clients/current/cards")
     public ResponseEntity<Object> createCard(Authentication authentication,
                                              @RequestParam CardType cardType,
                                              @RequestParam CardColor cardColor) {
         Client currentClient = clientRepository.findByEmail(authentication.getName());
 
+
+
         List<Card> cardList = currentClient.getCards().stream().filter(card -> {
             return card.getType() == cardType;
         }).collect(toList());
 
-        List<Card> cardListDelete = cardList.stream().filter(card -> {
+        List<Card> cardlistTrue = cardList.stream().filter(card -> {
             return card.isCardStatus();
         }).collect(toList());
 
-        if (cardListDelete.size() == 3 ) {
+        if (cardlistTrue.size() >= 3 ) {
             return new ResponseEntity<>("Forbidden, you can only register 3 Cards", HttpStatus.FORBIDDEN);
         }
         //GENERATE CARD NUMBER

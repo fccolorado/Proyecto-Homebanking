@@ -15,19 +15,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping("/api")
 public class PaymentController {
     @Autowired
-    private TransactionRepository transactionRepository;
+    TransactionRepository transactionRepository;
     @Autowired
-    private ClientRepository clientRepository;
+    ClientRepository clientRepository;
     @Autowired
     AccountRepository accountRepository;
 
@@ -45,16 +43,16 @@ public class PaymentController {
         if (paymentDTO == null) {
             return new ResponseEntity<>("Mising data", HttpStatus.FORBIDDEN);
         }
-        if (paymentDTO.getNumber().isEmpty() || card.getCvv() != paymentDTO.getCvv()  || paymentDTO.getAmount() == 0 || paymentDTO.getDescription().isEmpty()) {
+        if (paymentDTO.getNumber().isEmpty() || card.getCvv() != paymentDTO.getCvv() || paymentDTO.getAmount() == 0 || paymentDTO.getDescription().isEmpty()) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
         if (card == null) {
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Card doesn´t exists", HttpStatus.FORBIDDEN);
         }
         LocalDate dateNow = LocalDate.now();
         LocalDate thruDate = card.getThruDate();
 
-        if (thruDate.isAfter(dateNow )) {
+        if (thruDate.isBefore(dateNow)) {
             return new ResponseEntity<>("Expired card", HttpStatus.FORBIDDEN);
         }
 
@@ -62,14 +60,13 @@ public class PaymentController {
             return new ResponseEntity<>("Insufficient balance", HttpStatus.FORBIDDEN);
         }
 
-        Double accountPayment2 = accountPayment.stream().findFirst().get().getBalance();
-        Double amount = accountPayment2 - paymentDTO.getAmount();
-        String description3 = "Payment postnet";
-        Account accountPayment3 = accountPayment.stream().findFirst().get();
+        Account accountWithFunds = accountPayment.stream().findFirst().get();
+        Double balance = accountWithFunds.getBalance();
+        Double newBalance = balance - paymentDTO.getAmount();
 
-        Transaction debitTransaction = new Transaction(TransactionType.DEBIT, paymentDTO.getAmount(), description3, dateNow, accountPayment3);
+        Transaction debitTransaction = new Transaction(TransactionType.DEBIT, paymentDTO.getAmount(), paymentDTO.getDescription(), dateNow, accountWithFunds);
         transactionRepository.save(debitTransaction);
-        accountPayment3.setBalance(amount);
+        accountWithFunds.setBalance(newBalance);
         return new ResponseEntity<>("Transaction created!", HttpStatus.CREATED);
     }
 

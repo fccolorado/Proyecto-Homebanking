@@ -8,6 +8,7 @@ import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.CardRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.repositories.TransactionRepository;
+import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +27,11 @@ import static java.util.stream.Collectors.toList;
 public class TransactionController {
 
     @Autowired
-    private TransactionRepository transactionRepository;
+    TransactionRepository transactionRepository;
     @Autowired
-    private ClientRepository clientRepository;
+    ClientRepository clientRepository;
+    @Autowired
+    ClientService clientService;
     @Autowired
     AccountRepository accountRepository;
 
@@ -44,7 +47,7 @@ public class TransactionController {
             @RequestParam String description,
             @RequestParam String sourceAccountNumber,
             @RequestParam String destinationAccountNumber) {
-        Client currentClient = clientRepository.findByEmail(authentication.getName());
+        Client currentClient = clientService.findByEmailClient(authentication.getName());
         List<Account> authenticateSourceAccount = currentClient.getAccounts().stream().collect(toList());
 
         Account sourceAccount = accountRepository.findByNumber(sourceAccountNumber);
@@ -66,9 +69,14 @@ public class TransactionController {
         if (destinationAccount == null) {
             return new ResponseEntity<>("The account doesn't exist3", HttpStatus.FORBIDDEN);
         }
+
         if (sourceAccount.getBalance() < amount) {
             return new ResponseEntity<>("Insufficient balance", HttpStatus.FORBIDDEN);
         }
+        if ( amount < 0.01) {
+            return new ResponseEntity<>("Enter an amount greater than 0", HttpStatus.FORBIDDEN);
+        }
+
         //RESTO SALDO A CUENTA ORIGEN - SUMO SALDO A CUENTA DESTINO
         Double debitAmount = sourceAccount.getBalance() - amount;
         Double creditAmount = destinationAccount.getBalance() + amount;
@@ -90,7 +98,6 @@ public class TransactionController {
         return new ResponseEntity<>("Transaction created!", HttpStatus.CREATED);
 
     }
-
 
 
 }

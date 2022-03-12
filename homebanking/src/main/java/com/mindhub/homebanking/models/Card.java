@@ -23,12 +23,9 @@ public class Card {
     private LocalDate fromDate;
     private boolean cardStatus;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Client_id")
     private Client client;
-
-
 
     public Card() {
     }

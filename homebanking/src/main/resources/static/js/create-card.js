@@ -10,6 +10,10 @@ let app = new Vue({
         cardColor: [],
         creditCardsTrue: [],
         debitCardsTrue: [],
+        creditCardsTrueLength: [],
+        debitCardsTrueLength: [],
+
+
         isAdmin: false
     },
 
@@ -29,6 +33,8 @@ let app = new Vue({
                     this.creditCardsTrue = this.creditCards.filter(card => card.cardStatus == "true")
                     this.debitCardsTrue = this.debitCards.filter(card => card.cardStatus == "true")
 
+                    this.creditCardsTrueLength = this.creditCardsTrue.length
+                    this.debitCardsTrueLength = this.debitCardsTrue.length
                     if (this.clients.email.includes("fermin.colorado@mindhub.com")) {
                         this.isAdmin = true
                     }
@@ -67,15 +73,10 @@ let app = new Vue({
             })
 
             setTimeout(() => {
-                axios.post('/api/logout').then(response => { window.location.href = "/web/home.html" })
+                axios.post('/api/logout').then(response => { window.location.href = "/web/index.html" })
 
             }, 2000);
 
         }
-
-
-
-
-
     }
 })

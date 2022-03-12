@@ -28,20 +28,31 @@ let app = new Vue({
         },
 
         createAccount() {
-            Swal.fire({
-                title: 'Created account!',
-                icon: "success",
-                showConfirmButton: false,
-                timer: 2000,
-            })
+            if (this.type != '') {
+                Swal.fire({
+                    title: 'Created account!',
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 2000,
+                })
 
-            setTimeout(() => {
-                axios.post("/api/clients/current/accounts", "type=" + this.type)
-                    .then(response => { window.location.href = "/web/accounts.html" })
-                    .catch(error => {
-                        console.log(`Error en: ${error}`)
-                    })
-            }, 2000);
+                setTimeout(() => {
+                    axios.post("/api/clients/current/accounts", "type=" + this.type)
+                        .then(response => { window.location.href = "/web/accounts.html" })
+                        .catch(error => {
+                            console.log(`Error en: ${error}`)
+                        })
+                }, 2000);
+
+            } else {
+                Swal.fire({
+                    title: 'Select the type of account to create!',
+                    icon: "info",
+                    showConfirmButton: false,
+                    timer: 2000,
+                })
+            }
+
 
         },
 
@@ -54,7 +65,7 @@ let app = new Vue({
             })
 
             setTimeout(() => {
-                axios.post('/api/logout').then(response => { window.location.href = "/web/home.html" })
+                axios.post('/api/logout').then(response => { window.location.href = "/web/index.html" })
 
             }, 2000);
 

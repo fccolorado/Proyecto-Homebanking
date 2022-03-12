@@ -28,7 +28,6 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
     public void init(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(inputEmail -> {
             Client client = clientRepository.findByEmail(inputEmail);
-            Client admin = clientRepository.findByEmail(inputEmail);
 
             if (client != null) {
                 if (client.getEmail().contains("@mindhub.com")) {

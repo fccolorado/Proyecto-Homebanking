@@ -32,6 +32,13 @@ public class AccountController {
 //        return accountRepository.findAll().stream().map(AccountDTO::new).collect(toList());
 //    }
 
+    @GetMapping("/accounts/{id}")
+    public AccountDTO getAccount(@PathVariable Long id) {
+        AccountDTO accountDTO = new AccountDTO(accountRepository.findById(id).orElse(null));
+        return accountDTO;
+    }
+
+
     @GetMapping("/clients/current/accounts")
     public List<AccountDTO> getAccountsClientCurrent() {
         List<AccountDTO> accountList = accountRepository.findAll().stream().map(AccountDTO::new).collect(toList());
@@ -39,13 +46,6 @@ public class AccountController {
            accountDTO.isAccountStatus()
         ).collect(toList());
         return accountListTrue;
-    }
-
-
-    @GetMapping("/accounts/{id}")
-    public AccountDTO getAccount(@PathVariable Long id) {
-        AccountDTO account = new AccountDTO(accountRepository.findById(id).orElse(null));
-        return account;
     }
 
     int min = 10000000;

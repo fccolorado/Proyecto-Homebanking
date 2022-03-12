@@ -69,6 +69,9 @@ public class LoanController {
         if (loanApplicationDTO.getAmount() > loan.getMaxAmount()) {
             return new ResponseEntity<>("The maximum loan amount is exceeded", HttpStatus.FORBIDDEN);//
         }
+        if(loanApplicationDTO.getAmount() <= 0 ){
+            return new ResponseEntity<>("El monto debe ser distinto a 0", HttpStatus.FORBIDDEN);
+        }
 
         LocalDate dateNow = LocalDate.now();
         String description = loanApplicationDTO.getName() + " loan approved";

@@ -154,13 +154,13 @@
                                 <h6 class="form-label titleAmount text-dark rounded shadow p-2 fw-light fs-5 mb-md-2 ">
                                     How much do you need?</h6>
                                 <div>
-                                    <div class="d-flex">
-                                        <h6 class=" text-black fs-6 fw-normal m-1">Maximum amount </h6>
-                                        <h6 @change="loadLoans()" class="maxAmount m-1"> ${{loansMaxAmount}}</h6>
+                                    <div class="d-flex ">
+                                        <h6 class=" text-black fs-6 fw-normal m-1 animate__animated animate__fadeInLeft">Maximum amount </h6>
+                                        <h6 @change="loadLoans()" class="maxAmount m-1 animate__animated animate__fadeInLeft"> ${{loansMaxAmount}}</h6>
                                     </div>
-                                    <div class="d-flex justify-content-center">
-                                        <h6 class=" text-black fs-6 fw-normal m-1">Interest rate </h6>
-                                        <h6 class="maxAmount m-1"> {{loansPercentage}} %</h6>
+                                    <div class="d-flex justify-content-center ">
+                                        <h6 class=" text-black fs-6 fw-normal m-1 animate__animated animate__fadeInLeft">Interest rate </h6>
+                                        <h6 class="maxAmount m-1 animate__animated animate__fadeInLeft"> {{loansPercentage}} %</h6>
                                     </div>
                                 </div>
                                 <input @keyup="loanInterest(loansPercentage)" type="number" id="disabledTextInput" class="form-control  rounded shadow p-2 fw-light m-1" v-model="amount">

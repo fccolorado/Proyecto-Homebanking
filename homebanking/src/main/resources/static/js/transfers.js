@@ -44,37 +44,62 @@ let app = new Vue({
             })
 
             setTimeout(() => {
-                axios.post('/api/logout').then(response => { window.location.href = "/web/home.html" })
+                axios.post('/api/logout').then(response => { window.location.href = "/web/index.html" })
 
             }, 2000);
 
         },
 
         transfer() {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes!'
-            }).then((result) => {
-                if (result.isConfirmed) {
+            if (this.amount == null || this.description == '' || this.sourceAccountNumber || this.destinationAccountNumber == '') {
+                Swal.fire({
+                    title: 'Please fill in all the spaces!',
+                    icon: "info",
+                    showConfirmButton: false,
+                    timer: 2000,
+                })
+            }
 
-                    Swal.fire({
+            if (this.amount <= 0) {
+                Swal.fire({
+                    title: 'Enter an amount greater than 0!',
+                    icon: "info",
+                    showConfirmButton: false,
+                    timer: 2000,
+                })
+            } else if (this.sourceAccountNumber == this.destinationAccountNumber) {
+                Swal.fire({
+                    title: 'Source account number is equal to destination account!',
+                    icon: "info",
+                    showConfirmButton: false,
+                    timer: 2000,
+                })
+
+            } else {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        Swal.fire({
                             title: 'Successful transfer!',
                             icon: "success",
                             showConfirmButton: false,
-                        }
+                        })
+                        setTimeout(() => {
+                            this.createTransfer()
 
-                    )
-                    setTimeout(() => {
-                        this.createTransfer()
+                        }, 2000);
+                    }
+                })
+            }
 
-                    }, 2000);
-                }
-            })
 
         },
 

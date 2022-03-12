@@ -138,15 +138,12 @@
                 <div class="options borderShadow animate__animated animate__fadeInLeft">
                     <h2 class="title  fw-light fs-5 rounded shadow p-2 fw-light mb-md-2">Select card type</h2>
                     <div class="d-flex justify-content-center">
-                        <div v-show="creditCardsTrue.length < 3" class="cardType rounded shadow p-2 fw-light mb-md-2">
-                            <label for="cardType" class="cardColor1"><b>Debit</b></label>
-                            <input type="radio" v-model="cardType" value="DEBIT" checked>
-                        </div>
-
-                        <div v-show="debitCardsTrue.length < 3 " class="cardType rounded shadow p-2 fw-light mb-md-2">
-                            <label for="cardType" class="cardColor1"><b>Credit</b></label>
-                            <input type="radio" v-model="cardType" value="CREDIT" checked>
-                        </div>
+                        <!-- <label for="cardSilver" class="cardColor1"><b>DEBIT</b> </label>
+                        <input type="radio" name="CREDIT" v-model="cardType" v-show="debitCardsTrue.length < 3" value="DEBIT" checked> -->
+                        <select class=" form-select rounded shadow p-2 fw-light m-1 " v-model="cardType">
+                            <option class="text-dark" v-if="debitCardsTrueLength  <= 3">DEBIT</option>
+                            <option class="text-dark" v-if="creditCardsTrue.length <= 3">CREDIT</option>
+                        </select> {{creditCardsTrueLength}}
                     </div>
 
                 </div>

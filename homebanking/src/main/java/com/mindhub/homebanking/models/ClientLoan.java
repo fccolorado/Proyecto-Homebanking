@@ -15,7 +15,6 @@ public class ClientLoan {
     private long id;
 
     private Double amount;
-
     private int payments;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -40,8 +39,6 @@ public class ClientLoan {
     public long getId() {
         return id;
     }
-
-
 
     public Double getAmount() {
         return amount;
@@ -74,7 +71,5 @@ public class ClientLoan {
     public void setLoan(Loan loan) {
         this.loan = loan;
     }
-
-
 
 }

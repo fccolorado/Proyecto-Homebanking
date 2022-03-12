@@ -22,14 +22,11 @@ public class Loan {
 
     private String name;
     private Double maxAmount;
+    private Double percentage;
 
     @ElementCollection
     @Column(name = "payment")
     private List<Integer> payments = new ArrayList<>();
-
-    private Double percentage;
-
-
 
     @OneToMany(mappedBy = "loan", fetch = FetchType.EAGER)
     private Set<ClientLoan> clientLoans = new HashSet<>();
@@ -38,7 +35,6 @@ public class Loan {
     }
 
     public Loan(String name, Double maxAmount, List<Integer> payments, Double percentage) {
-//        this.id = id;
         this.name = name;
         this.maxAmount = maxAmount;
         this.payments = payments;
@@ -48,7 +44,6 @@ public class Loan {
     public long getId() {
         return id;
     }
-
 
     public String getName() {
         return name;
@@ -81,7 +76,6 @@ public class Loan {
     @JsonIgnore
     public List<Client> getClients() {
         return clientLoans.stream().map(sub -> sub.getClient()).collect(toList());
-
     }
 
     public Double getPercentage() {

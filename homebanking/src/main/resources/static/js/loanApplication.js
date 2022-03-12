@@ -31,10 +31,6 @@ let app = new Vue({
         this.loadData()
     },
 
-    // update() {
-    //     this.filterLoans()
-    // },
-
     methods: {
         loadData() {
             axios.get('/api/clients/current')
@@ -92,37 +88,50 @@ let app = new Vue({
                 })
         },
         createLoan() {
-            Swal.fire({
-                title: 'Accept loan?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Reject',
-                confirmButtonText: 'Accept'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    axios.post('/api/loans', { "name": this.name, "amount": this.amount, "payments": this.payments, "destinationAccountNumber": this.destinationAccountNumber })
-                        .then(() => {
-                            Swal.fire({
-                                    title: `Amount deposited in your account: ${this.destinationAccountNumber}`,
-                                    icon: "success",
-                                    showConfirmButton: false,
-                                }),
+            if (this.amount <= 0) {
+                Swal.fire({
+                    title: 'Monto debe ser mayor a 0!',
+                    showConfirmButton: false,
+                    icon: 'info',
+                    timer: 1000,
+                })
 
-                                setTimeout(() => {
-                                    window.location.href = "/web/accounts.html"
+            } else {
+                Swal.fire({
+                    title: 'Accept loan?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Reject',
+                    confirmButtonText: 'Accept'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axios.post('/api/loans', { "name": this.name, "amount": this.amount, "payments": this.payments, "destinationAccountNumber": this.destinationAccountNumber })
+                            .then(() => {
+                                Swal.fire({
+                                        title: `Amount deposited in your account: ${this.destinationAccountNumber}`,
+                                        icon: "success",
+                                        showConfirmButton: false,
+                                    }),
 
-                                }, 3000)
-                        })
+                                    setTimeout(() => {
+                                        window.location.href = "/web/accounts.html"
 
-                    .catch(() => console.log('error'))
-                }
-            })
+                                    }, 3000)
+                            })
+
+                        .catch(() => console.log('error'))
+                    }
+                })
+
+            }
+
         },
 
         loanInterest(percentage) {
-            this.loanInteres = ((this.amount / this.payments) + (this.payments * percentage)).toFixed(2)
+            this.loanInteres = this.amount / this.payments
+            this.loanInteres = ((this.loanInteres * percentage) + this.loanInteres).toFixed(2)
             return this.loanInteres
         },
 
@@ -135,7 +144,7 @@ let app = new Vue({
             })
 
             setTimeout(() => {
-                axios.post('/api/logout').then(response => { window.location.href = "/web/home.html" })
+                axios.post('/api/logout').then(response => { window.location.href = "/web/index.html" })
 
             }, 2000);
 
